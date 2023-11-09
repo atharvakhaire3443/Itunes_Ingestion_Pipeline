@@ -38,8 +38,8 @@ def pull_from_itunes_and_upload_to_s3(artist_list, bucket_name, s3_key_prefix):
     session = requests.Session()
     retries = Retry(total=5, backoff_factor=1, status_forcelist=[ 502, 503, 504 ])
     session.mount('https://', HTTPAdapter(max_retries=retries))
-    s3 = boto3.client('s3',aws_access_key_id='AKIAXSLCGTCHMJYXPYEL',
-        aws_secret_access_key='4CMv7Oihg+BzNppCtjRxRNMUDkIKAmxCZbMwL+vn')
+    s3 = boto3.client('s3',aws_access_key_id='your-key',
+        aws_secret_access_key='your-secret-key')
     df_list = [fetch_artist_data(artist,session) for artist in artist_list]
     raw_df = pd.concat(df_list, ignore_index=True)
     parquet_buffer = io.BytesIO()
@@ -59,8 +59,8 @@ pull_and_store_itunes_data = PythonOperator(
         'artist_list': artist_list,
         'bucket_name': s3_bucket_name,
         's3_key_prefix': s3_key_prefix,
-        'aws_access_key': 'AKIAXSLCGTCHMJYXPYEL',
-        'aws_secret_key': '4CMv7Oihg+BzNppCtjRxRNMUDkIKAmxCZbMwL+vn',
+        'aws_access_key': 'your-key',
+        'aws_secret_key': 'your-secret-key',
     },
     dag=dag,
 )
