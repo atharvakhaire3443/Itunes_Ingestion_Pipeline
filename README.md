@@ -1,21 +1,22 @@
 # Itunes_Ingestion_Pipeline
 
 Prerequisites:
-Docker Desktop
 
-Kind
+- Docker Desktop
 
-Kubectl
+- Kind
 
-Code editor
+- Kubectl
 
-Docker CLI (optional)
+- Code editor
 
-DockerHub credentials
+- Docker CLI (optional)
 
-Helm
+- DockerHub credentials
 
-AWS account with S3 and EMR access
+- Helm
+
+- AWS account with S3 and EMR access
 
 One of the most important aspects about running a company is to maintain data. It has to be accurate and available immediately. Big Tech companies or any data driven company for that matter can’t just work on spreadsheets and expect to float. They need a database and with that data pipelines to fill these databases.
 
